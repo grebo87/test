@@ -1,8 +1,8 @@
 <h3>Listado del Personal</h3><br>
 <div class="row">
     <div class="col col-md-6">
-        <a href="<?php  echo base_url();?>users/create" class="btn btn-primary">
-            <i class="fa fa-plus-square" ></i>  Registrar Usuario
+        <a href="<?php  echo base_url();?>personal/create" class="btn btn-primary">
+            <i class="fa fa-plus-square" ></i>  Registrar Personal
         </a>
                 
     </div>                                                    
@@ -44,7 +44,7 @@
 					<div class="btn-group btn-group-sm">
                         <a href="<?php  echo base_url();?>personal/<?php  echo $persona->id;?>" class="btn btn-info" title="Ver"><i class="fa fa-eye"></i></a>
                         <a href="<?php  echo base_url();?>personal/<?php  echo $persona->id;?>/edit" class="btn btn-primary" title="Modificar"><i class="fa fa-pencil"></i></a>
-                        <a href="<?php  echo base_url();?>users/delete/<?php  echo $persona->id;?>" class="btn btn-danger" title="Eliminar" onclick="if(confirm('&iquest;Esta seguro que desea Eliminar al usuario?')) return true;  else return false;"><i class="fa fa-trash"></i></a>
+                        <a href="<?php  echo base_url();?>personal/delete/<?php  echo $persona->id;?>" class="btn btn-danger" title="Eliminar" onclick="if(confirm('&iquest;Esta seguro que desea Eliminar al usuario?')) return true;  else return false;"><i class="fa fa-trash"></i></a>
                     </div>
 				</td>
 			</tr>
