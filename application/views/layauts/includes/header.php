@@ -15,7 +15,7 @@
 		        <ul class="dropdown-menu" role="menu">
 		            <li><a href="<?php  echo base_url();?>personal"><i class="fa fa-user"></i> Lisdato</a></li>
 		            <li class="divider"></li>
-		            <li><a href=""><i class="fa fa-users"></i> Nuevo</a></li>		            
+		            <li><a href="<?php  echo base_url();?>personal/create"><i class="fa fa-users"></i> Nuevo</a></li>		            
 		        </ul>
 		    </li>
         </ul>
