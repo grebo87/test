@@ -8,7 +8,7 @@
 
 
 <div class="inner-spacer">
-
+        <h3>Editar Registro del Personal</h3><br>
         <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
             <li class="active"><a href="#datos_generales" data-toggle="tab">Datos Generales</a></li>
             <li><a href="#domicilio" data-toggle="tab">Domicilio</a></li>
