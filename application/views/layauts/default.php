@@ -15,15 +15,17 @@
             <div class="pad5 col8">
                   <?php
                   // printing Errors
-                  if( isset($errors) ){
+                  if( $this->session->flashdata() ){
                   ?>
-                    <div class="alert alert-warning" role="alert">
+                    <div class="alert alert-<?php echo $this->session->flashdata('alert');?> alert-dismissable" role="alert">
+                      <button type="button" class="close" data-dismiss="alert">&times;</button>
+                      <span>
+                         <?php
+                            echo $this->session->flashdata('errors');
+                          ?>
+                      </span>
                       <ul>
-                      <?php
-                        foreach($errors as $error){
-                          echo '<li>'.$error.'</li>';
-                        }
-                      ?>
+                      
                       </ul>
                     </div>
                   <?php
