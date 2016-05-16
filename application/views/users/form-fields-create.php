@@ -1,3 +1,4 @@
+<h3>Registro de Usuario</h3><br>
 <form action="<?php  echo base_url();?>users/store" id="form_user_create" class="commentForm" method="post" accept-charset="utf-8">
 	<div class="form-group">
 		<p class="help-block">Nombre:</p>
