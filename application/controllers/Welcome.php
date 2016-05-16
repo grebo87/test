@@ -20,14 +20,20 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+		
+		if ($this->session->userdata('logged_in') == false) {
+			$errors[] = 'No se encuentra Loggeado';
+			$this->session->set_userdata(array('errors'=>$errors));
+			redirect(base_url(), 'refresh');
+		}
 		$data= [];
+		if( $this->session->userdata('errors') ){
+				$data['errors'] = $this->session->userdata('errors');
+				$this->session->unset_userdata('errors');
+		}
 		$data['title'] = "Home";
 		$data['view'] = $this->load->view('home',$data,TRUE);
 		$this->load->view('layauts/default',$data);
 	}
-
-	public function prueba()
-	{
-		echo "string";
-	}
+	
 }
