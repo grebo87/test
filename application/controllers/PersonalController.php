@@ -10,6 +10,11 @@ class PersonalController extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Personal');
+		if ($this->session->userdata('logged_in') == false) {
+			$errors[] = 'No se encuentra Loggeado';
+			$this->session->set_userdata(array('errors'=>$errors));
+			redirect(base_url(), 'refresh');
+		}
 	}
 
 	public function index()
@@ -33,8 +38,8 @@ class PersonalController extends CI_Controller
 			$data['view'] = $this->load->view('personal/show',$data,TRUE);
 			$this->load->view('layauts/default',$data);
 		} else {
-			$errors[] = 'No hay data';
-			$this->session->set_userdata(array('errors'=>$errors));
+			$this->session->set_flashdata('errors','No hay data');
+			$this->session->set_flashdata('alert','danger');
 			redirect(base_url().'personal', 'refresh');
 		}
 		
@@ -54,15 +59,10 @@ class PersonalController extends CI_Controller
 			$data['view'] = $this->load->view('personal/edit',$data,TRUE);
 			$this->load->view('layauts/default',$data);
 		} else {
-			$errors[] = 'No hay data';
-			$this->session->set_userdata(array('errors'=>$errors));
+			$this->session->set_flashdata('errors','No hay data');
+			$this->session->set_flashdata('alert','danger');
 			redirect(base_url().'personal', 'refresh');
 		}
-	}
-
-	public function update()
-	{
-		echo "update";
 	}
 
 	public function create()
@@ -83,12 +83,12 @@ class PersonalController extends CI_Controller
 		$domicilio_id = $this->Personal->storeDomicilio($domicilio);
 
 		if ($domicilio_id) {
-			$errors[] = 'Datos Guardados';
-			$this->session->set_userdata(array('errors'=>$errors));
+			$this->session->set_flashdata('errors','Datos Guardados');
+			$this->session->set_flashdata('alert','success');
 			redirect(base_url().'personal', 'refresh');
 		} else {
-			$errors[] = 'Datos no Guardados';
-			$this->session->set_userdata(array('errors'=>$errors));
+			$this->session->set_flashdata('errors','Datos no Guardados');
+			$this->session->set_flashdata('alert','danger');
 			redirect(base_url().'personal/create', 'refresh');
 		}
 		
@@ -105,12 +105,12 @@ class PersonalController extends CI_Controller
 		$domicilio = $this->input->post('domicilio');
 		$response = $this->Personal->updateDomicilio($domicilio);
 		if ($response > 0) {
-			$errors[] = 'Datos Editados';
-			$this->session->set_userdata(array('errors'=>$errors));
+			$this->session->set_flashdata('errors','Datos Editados');
+			$this->session->set_flashdata('alert','success');
 			redirect(base_url().'personal', 'refresh');
 		} else {
-			$errors[] = 'Datos no Editados';
-			$this->session->set_userdata(array('errors'=>$errors));
+			$this->session->set_flashdata('errors','Datos no Editados');
+			$this->session->set_flashdata('alert','danger');
 			redirect(base_url().'personal/'.$domicilio['personal_id'].'/edit', 'refresh');
 		}
 		
@@ -122,12 +122,12 @@ class PersonalController extends CI_Controller
 		$personal = $this->input->post('personal');
 		$response = $this->Personal->updatePuesto($personal);
 		if ($response > 0) {
-			$errors[] = 'Datos Editados';
-			$this->session->set_userdata(array('errors'=>$errors));
+			$this->session->set_flashdata('errors','Datos Editados');
+			$this->session->set_flashdata('alert','success');
 			redirect(base_url().'personal', 'refresh');
 		} else {
-			$errors[] = 'Datos no Editados';
-			$this->session->set_userdata(array('errors'=>$errors));
+			$this->session->set_flashdata('errors','Datos no Editados');
+			$this->session->set_flashdata('alert','danger');
 			redirect(base_url().'personal/'.$personal['personal_id'].'/edit', 'refresh');
 		}
 	}
@@ -137,12 +137,12 @@ class PersonalController extends CI_Controller
 		$personal = $this->input->post('personal');
 		$response = $this->Personal->updateDatosGenerales($personal);
 		if ($response > 0) {
-			$errors[] = 'Datos Editados';
-			$this->session->set_userdata(array('errors'=>$errors));
+			$this->session->set_flashdata('errors','Datos Editados');
+			$this->session->set_flashdata('alert','success');
 			redirect(base_url().'personal', 'refresh');
 		} else {
-			$errors[] = 'Datos no Editados';
-			$this->session->set_userdata(array('errors'=>$errors));
+			$this->session->set_flashdata('errors','Datos no Editados');
+			$this->session->set_flashdata('alert','danger');
 			redirect(base_url().'personal/'.$personal['id'].'/edit', 'refresh');
 		}
 	}
@@ -152,12 +152,12 @@ class PersonalController extends CI_Controller
 		
 		$response = $this->Personal->delete($id);
 		if ($response > 0) {
-			$errors[] = 'Datos Eliminados';
-			$this->session->set_userdata(array('errors'=>$errors));
+			$this->session->set_flashdata('errors','Datos Eliminados');
+			$this->session->set_flashdata('alert','success');
 			redirect(base_url().'personal', 'refresh');
 		} else {
-			$errors[] = 'Datos no Eliminados';
-			$this->session->set_userdata(array('errors'=>$errors));
+			$this->session->set_flashdata('errors','Datos no Eliminados');
+			$this->session->set_flashdata('alert','danger');
 			redirect(base_url().'personal', 'refresh');
 		}
 	}
