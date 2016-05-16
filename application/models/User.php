@@ -75,6 +75,29 @@ class User extends CI_Model {
         }
 
     }
+
+    function changePassword($user = array())
+    {
+        $this->db->where('id', $user['id']);
+        unset($user['password_actual']);
+        unset($user['confirm_password']);
+        $this->db->update('users', $user);
+        return $this->db->affected_rows();
+    }
+
+    function getPassword($id = '')
+    {
+        $this->db->where('id',$id);       
+        $query = $this->db->get('users',1);
+
+        //returning
+        if ($query->num_rows() > 0){
+            return $query->row()->password;
+        }
+        else{
+            return null;
+        }
+    }
     
 }
 
