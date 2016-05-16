@@ -8,6 +8,7 @@
 
 
     <div class="inner-spacer">
+    <h3>Registro de Personal</h3><br>
     	<form action="<?php  echo base_url();?>personal/store" id="form-personal-create"  method="post" accept-charset="utf-8">
     		<?php include('shared/form-fields-create.php'); ?>
     	<div class="action">
