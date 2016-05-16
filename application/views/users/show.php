@@ -5,7 +5,7 @@
 </div>
 
     <br>
-<h2>Información del Usuario</h2>
+<h2>Información del Usuario <?php echo $user->login;?></h2>
 
 <div class="invoice-block">
     <div class="row">
