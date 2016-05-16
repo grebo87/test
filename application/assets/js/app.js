@@ -31,6 +31,7 @@ $(function() {
 						},
 						tipo: "required",
 						status: "required",
+						password_actual: "required",
 					},
 					messages: {
 						nombre: "El campo es Requerido",
@@ -52,6 +53,7 @@ $(function() {
 						cedula: "El campo es Requerido",
 						tipo: "El campo es Requerido",
 						status: "El campo es Requerido",
+						password_actual: "El campo es Requerido",
 					}
 		});
 });
@@ -217,3 +219,37 @@ $(function() {
 
 
 
+// ========================================================================
+//  Eventos Usuarios Perfil
+// ========================================================================
+$(function() {
+
+		$("#form_change_password").validate({
+					rules: {
+						
+						password: {
+							required: true,
+							minlength: 5
+						},
+						confirm_password: {
+							required: true,
+							minlength: 5,
+							equalTo: "#password1"
+						},
+						password_actual: "required",
+					},
+					messages: {
+						
+						password: {
+							required: "El campo es Requerido",
+							minlength: "Minimo 5 caracteres"
+						},
+						confirm_password: {
+							required: "El campo es Requerido",
+							minlength: "Minimo 5 caracteres",
+							equalTo: "Las contaseña no son iguales"
+						},
+						password_actual: "El campo es Requerido",
+					}
+		});
+});
